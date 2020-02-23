@@ -1,21 +1,37 @@
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const increaseIndex = 13;
 
+function checkSizeChar(char) {
+    let size;
+
+    if (alphabet.indexOf(char) === -1) {
+
+        char = char.toLowerCase();
+        alphabet.indexOf(char) > -1 ? size = "big" : size = "small";
+
+    } else size = "small";
+
+    return size;
+}
+
 function encrypt(text) {
     const textBeforeEncrypt = [...text];
     const textAfterEncrypt = [];
+    let flagSize;
 
 
     for (let i = 0; i < textBeforeEncrypt.length; i++) {
-        const index = alphabet.indexOf(textBeforeEncrypt[i]);
+        let index;
+        flagSize = checkSizeChar(textBeforeEncrypt[i]);
+        flagSize === "big" ? index = alphabet.indexOf(textBeforeEncrypt[i].toLowerCase()) : index = alphabet.indexOf(textBeforeEncrypt[i]);
 
         if (index > -1 && index + increaseIndex < alphabet.length) {
-            textAfterEncrypt.push(alphabet[index + increaseIndex]);
+            flagSize === "big" ? textAfterEncrypt.push(alphabet[index + increaseIndex].toUpperCase()) : textAfterEncrypt.push(alphabet[index + increaseIndex]);
         }
 
         if (index > -1 && index + increaseIndex >= alphabet.length) {
             const modulo = (index + increaseIndex) % 26;
-            textAfterEncrypt.push(alphabet[modulo]);
+            flagSize === "big" ? textAfterEncrypt.push(alphabet[modulo].toUpperCase()) : textAfterEncrypt.push(alphabet[modulo]);
         }
     }
 
