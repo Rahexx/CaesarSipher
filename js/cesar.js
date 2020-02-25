@@ -7,7 +7,7 @@ function checkSizeChar(char) {
     if (alphabet.indexOf(char) === -1) {
 
         char = char.toLowerCase();
-        alphabet.indexOf(char) > -1 ? size = "big" : size = "small";
+        alphabet.indexOf(char) > -1 ? size = "big" : size = "null";
 
     } else size = "small";
 
