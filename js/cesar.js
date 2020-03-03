@@ -7,7 +7,7 @@ function checkSizeChar(char) {
     if (alphabet.indexOf(char) === -1) {
 
         char = char.toLowerCase();
-        alphabet.indexOf(char) > -1 ? size = "big" : size = "null";
+        size = alphabet.indexOf(char) > -1 ? "big" : "wrong";
 
     } else size = "small";
 
@@ -35,8 +35,11 @@ function encrypt(text) {
         }
     }
 
-    if (textBeforeEncrypt.length === 0 || textAfterEncrypt.length != textBeforeEncrypt.length) return "Tekst przekazany do zaszyfrowania jest pusty lub nie jest ciągiem znaków";
-    else return textAfterEncrypt.join("").replace(",", "");
+    if (textBeforeEncrypt.length === 0 || textAfterEncrypt.length != textBeforeEncrypt.length) {
+        return "Tekst przekazany do zaszyfrowania jest pusty lub nie jest ciągiem znaków";
+    } else {
+        return textAfterEncrypt.join("").replace(",", "");
+    }
 }
 
 export {
